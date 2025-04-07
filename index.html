@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You pookie</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #ffe6e6, #fff1f0);
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      color: #ff6f91;
+      margin-top: 20px;
+      animation: popUp 1s ease-in-out;
+    }
+
+    @keyframes popUp {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 6px solid #ffccd5;
+      margin: 20px 0;
+      box-shadow: 0 10px 25px rgba(255, 105, 135, 0.3);
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    p {
+      font-size: 1.3em;
+      color: #555;
+      padding: 0 20px;
+      max-width: 90%;
+      line-height: 1.6;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 10px 25px;
+      font-size: 18px;
+      border-radius: 25px;
+      background-color: #ff6f91;
+      color: white;
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff3f71;
+    }
+
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .hearts span {
+      position: absolute;
+      bottom: -150px;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      opacity: 0.6;
+      animation: floatHearts 10s linear infinite;
+      border-radius: 50% 50% 0 50%;
+      transform: rotate(-45deg);
+    }
+
+    .hearts span:nth-child(odd) {
+      background: #ffb6c1;
+    }
+
+    .hearts span:nth-child(even) {
+      background: #ff99ac;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(0) rotate(-45deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(-45deg);
+        opacity: 0;
+      }
+    }
+
+    .hearts span:nth-child(1) { left: 20%; animation-delay: 0s; }
+    .hearts span:nth-child(2) { left: 40%; animation-delay: 2s; }
+    .hearts span:nth-child(3) { left: 60%; animation-delay: 4s; }
+    .hearts span:nth-child(4) { left: 80%; animation-delay: 1s; }
+    .hearts span:nth-child(5) { left: 30%; animation-delay: 3s; }
+    .hearts span:nth-child(6) { left: 70%; animation-delay: 5s; }
+
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <h1>Hey BLUE!</h1>
+
+  <img src="her-pic.jpg" alt="Your Photo">
+
+  <p>
+    was it the beauty in your eyes
+making the sky fall apart,
+or was it that damn smile
+that made me believe in god and his art,
+no wonder my poems have felt so lonely
+for it was always you, 
+the love of their hearts.
+  </p>
+
+  <button onclick="alert('Sending you the biggest virtual hug!')">
+  Click me if you're smiling, ill keep surprising you:)
+</button>
+  <div class="secret">
+    P.S. Remember the night we talked for the first time ? This page has that same vibe.  
+    You're the kind of person who makes late-night talks feel like magic and youre full of comfort.
+    btw you look too cute when in kalesh mode!
+  </div>
+  <div id="emoji-rain"></div>
+
+<script>
+  setInterval(() => {
+    const emoji = document.createElement('div');
+    emoji.textContent = Math.random() < 0.5 ? '✨' : '❤️';
+    emoji.style.position = 'fixed';
+    emoji.style.left = Math.random() * 100 + 'vw';
+    emoji.style.fontSize = '24px';
+    emoji.style.top = '-2vh';
+    emoji.style.zIndex = 1;
+    emoji.style.animation = 'drop 3s linear';
+    document.body.appendChild(emoji);
+    setTimeout(() => emoji.remove(), 3000);
+  }, 300);
+
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @keyframes drop {
+      to { transform: translateY(120vh); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(style);
+</script>
+</body>
+</html>
